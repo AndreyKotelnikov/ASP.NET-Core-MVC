@@ -18,6 +18,11 @@ namespace ASP_NET_Core_MVC_Level_1.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult ReadConfig()
+        {
             return Content(_configuration["CustomData"]);
         }
     }
