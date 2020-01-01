@@ -34,6 +34,9 @@ namespace ASP_NET_Core_MVC_Level_1
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles(new StaticFileOptions {ServeUnknownFileTypes = true});
+            app.UseDefaultFiles();
+
             //app.UseRouting();
 
             //app.UseEndpoints(endpoints =>
