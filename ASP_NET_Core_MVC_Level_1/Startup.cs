@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +24,7 @@ namespace ASP_NET_Core_MVC_Level_1
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(op => op.EnableEndpointRouting = false);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -32,15 +34,21 @@ namespace ASP_NET_Core_MVC_Level_1
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            //app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync(Configuration["CustomData"]);
-                });
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync(Configuration["CustomData"]);
+            //    });
+            //});
+
+            //app.UseMvcWithDefaultRoute();
+
+            app.UseMvc(routes => routes.MapRoute(
+                "default",
+                "{Controller=Home}/{action=Index}/{id?}"));
         }
     }
 }
