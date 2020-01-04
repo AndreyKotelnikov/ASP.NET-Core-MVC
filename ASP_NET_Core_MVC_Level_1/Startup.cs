@@ -32,6 +32,7 @@ namespace ASP_NET_Core_MVC_Level_1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
             }
 
             app.UseStaticFiles(new StaticFileOptions {ServeUnknownFileTypes = true});
