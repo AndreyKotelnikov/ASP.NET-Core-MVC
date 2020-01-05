@@ -1,3 +1,4 @@
+using ASP_NET_Core_MVC.Infrastructure.Conventions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +19,11 @@ namespace ASP_NET_Core_MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(op => op.EnableEndpointRouting = false);
+            services.AddMvc(op =>
+            {
+                op.EnableEndpointRouting = false;
+                //op.Conventions.Add(new CustomControllerConvention());
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
