@@ -106,5 +106,30 @@ namespace ASP_NET_Core_MVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            var employee = _employeesData.GetById(id);
+            if (employee is null)
+            {
+                return NotFound();
+            }
+
+            return View(employee);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _employeesData.Delete(id);
+            _employeesData.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
