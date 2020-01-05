@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,15 +8,14 @@ namespace ASP_NET_Core_MVC.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly IEnumerable<EmployeeView> _employeeViews = Enumerable.Range(1, 10)
-        .Select(e => new EmployeeView
-        {
-            Id = e,
-            Name = $"Name {e}",
-            SecondName = $"SecondName {e}"
-        });
+        private readonly IEmployeesData _employeesData;
 
-        public IActionResult Index() => View(_employeeViews);
+        public EmployeesController(IEmployeesData employeesData)
+        {
+            _employeesData = employeesData;
+        }
+
+        public IActionResult Index() => View(_employeesData.GetAll());
 
         public IActionResult Details(int? id)
         {
@@ -24,7 +24,7 @@ namespace ASP_NET_Core_MVC.Controllers
                 return BadRequest();
             }
 
-            var employee = _employeeViews.FirstOrDefault(e => e.Id == id);
+            var employee = _employeesData.GetById((int)id);
             if (employee is null)
             {
                 return NotFound();
@@ -40,7 +40,7 @@ namespace ASP_NET_Core_MVC.Controllers
                 return BadRequest();
             }
 
-            var sellectEmployees = _employeeViews;
+            var sellectEmployees = _employeesData.GetAll();
             if (!string.IsNullOrWhiteSpace(name))
             {
                 sellectEmployees = sellectEmployees.Where(e => e.Name == name);
