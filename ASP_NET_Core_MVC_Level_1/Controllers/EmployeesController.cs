@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.ViewModels;
@@ -60,10 +61,50 @@ namespace ASP_NET_Core_MVC.Controllers
             return View(nameof(Details), employee);
         }
 
-        [HttpPost]
-        public IActionResult Edit(int id, [FromBody] EmployeeView employee)
+        public IActionResult EditOrCreate(int? id)
         {
-            return RedirectToAction(nameof(Index));
+            if (id is null)
+            {
+                return View(new EmployeeView());
+            }
+
+            if (id <= 0)
+            {
+                return BadRequest();
+            }
+
+            var employee = _employeesData.GetById((int)id);
+            if (employee is null)
+            {
+                return NotFound();
+            }
+
+            return View(employee);
+        }
+
+        [HttpPost]
+        public IActionResult EditOrCreate(EmployeeView employee)
+        {
+            if (employee == null) throw new ArgumentNullException(nameof(employee));
+
+            if (!ModelState.IsValid)
+            {
+                return View(employee);
+            }
+
+            var id = employee.Id;
+            if (id == 0)
+            {
+                _employeesData.Add(employee);
+            }
+            else
+            {
+                _employeesData.Edit(id, employee);
+            }
+            
+            _employeesData.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -5,12 +5,16 @@
 }
 
 <h2>@ViewBag.Title</h2>
+
+<a asp-action="EditOrCreate" class="btn btn-success">Create employee</a>
+
 <table class="table">
     <thead>
     <tr>
         <th>Id</th>
         <th>Name</th>
         <th>SurName</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -32,6 +36,11 @@
                    asp-route-name="@employee.Name" 
                    asp-route-secondName="@employee.SecondName">
                     @employee.SecondName
+                </a>
+            </td>
+            <td>
+                <a asp-action="EditOrCreate" asp-route-id="@employee.Id">
+                    <i class="fa fa-user-edit"></i>
                 </a>
             </td>
         </tr>
