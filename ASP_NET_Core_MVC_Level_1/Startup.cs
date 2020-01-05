@@ -1,6 +1,7 @@
 using ASP_NET_Core_MVC.Infrastructure.Conventions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,10 +35,19 @@ namespace ASP_NET_Core_MVC
                 app.UseBrowserLink();
             }
 
-            app.UseWelcomePage("/Welcome"); //example of middleware
+            //examples of middleware
+            //app.UseWelcomePage("/Welcome"); 
+            ////app.Run(async context => await context.Response.WriteAsync("Hello world!")); //Unconditional execution with self-locking
+            //app.Map("/Hello",
+            //    application => application.Run(async context => await context.Response.WriteAsync("Hello world!")));
+            //app.UseAuthentication();
+            ////app.UseSession();
+            //app.UseResponseCaching();
+            ////app.UseResponseCompression();
 
             app.UseStaticFiles(new StaticFileOptions {ServeUnknownFileTypes = true});
             app.UseDefaultFiles();
+            app.UseCookiePolicy();
 
             //app.UseRouting();
 
