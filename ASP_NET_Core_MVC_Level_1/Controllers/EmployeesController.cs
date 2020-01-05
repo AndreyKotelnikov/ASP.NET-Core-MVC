@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using ASP_NET_Core_MVC_Level_1.ViewModels;
+using ASP_NET_Core_MVC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASP_NET_Core_MVC_Level_1.Controllers
+namespace ASP_NET_Core_MVC.Controllers
 {
     public class EmployeesController : Controller
     {

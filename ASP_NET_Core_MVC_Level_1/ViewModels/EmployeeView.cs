@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASP_NET_Core_MVC_Level_1.ViewModels
+namespace ASP_NET_Core_MVC.ViewModels
 {
     public class EmployeeView
     {
