@@ -1,4 +1,6 @@
 using ASP_NET_Core_MVC.Infrastructure.Conventions;
+using ASP_NET_Core_MVC.Infrastructure.Interfaces;
+using ASP_NET_Core_MVC.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +22,8 @@ namespace ASP_NET_Core_MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            
             services.AddMvc(op =>
             {
                 op.EnableEndpointRouting = false;
