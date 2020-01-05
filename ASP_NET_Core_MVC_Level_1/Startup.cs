@@ -34,6 +34,8 @@ namespace ASP_NET_Core_MVC
                 app.UseBrowserLink();
             }
 
+            app.UseWelcomePage("/Welcome"); //example of middleware
+
             app.UseStaticFiles(new StaticFileOptions {ServeUnknownFileTypes = true});
             app.UseDefaultFiles();
 
