@@ -13,5 +13,22 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
         public IEnumerable<Brand> GetBrands() => TestData.Brands;
        
         public IEnumerable<Section> GetSections() => TestData.Sections;
+
+        public IEnumerable<Product> GetProducts(ProductFilter filter = null)
+        {
+            var query = TestData.Products;
+
+            if (filter?.BrandId != null)
+            {
+                query = query.Where(p => p.BrandId == filter.BrandId);
+            }
+
+            if (filter?.SectionId != null)
+            {
+                query = query.Where(p => p.SectionId == filter.SectionId);
+            }
+
+            return query;
+        }
     }
 }
