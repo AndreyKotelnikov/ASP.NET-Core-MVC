@@ -87,6 +87,11 @@ namespace ASP_NET_Core_MVC.Controllers
         {
             if (employee == null) throw new ArgumentNullException(nameof(employee));
 
+            if (employee.Age < 18)
+            {
+                ModelState.AddModelError(nameof(employee.Age), "Возраст должен быть 18 лет и больше!");
+            }
+            
             if (!ModelState.IsValid)
             {
                 return View(employee);

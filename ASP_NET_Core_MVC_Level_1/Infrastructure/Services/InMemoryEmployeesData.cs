@@ -16,7 +16,7 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
             {
                 Id = e,
                 Name = $"Name {e}",
-                SecondName = $"SecondName {e}",
+                SecondName = $"Secondname {e}",
                 Patronymic = $"Patronymic {e}",
                 Age = e % 30 + 20
             })
