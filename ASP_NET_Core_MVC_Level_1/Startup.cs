@@ -23,6 +23,7 @@ namespace ASP_NET_Core_MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddScoped<IProductData, InMemoryProductData>();
             
             services.AddMvc(op =>
             {
