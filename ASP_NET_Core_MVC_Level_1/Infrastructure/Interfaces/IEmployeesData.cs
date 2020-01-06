@@ -8,13 +8,13 @@ namespace ASP_NET_Core_MVC.Infrastructure.Interfaces
 {
     public interface IEmployeesData
     {
-        IEnumerable<EmployeeView> GetAll();
+        IEnumerable<EmployeeViewModel> GetAll();
 
-        EmployeeView GetById(int id);
+        EmployeeViewModel GetById(int id);
 
-        void Add(EmployeeView employee);
+        void Add(EmployeeViewModel employee);
 
-        void Edit(int id, EmployeeView employee);
+        void Edit(int id, EmployeeViewModel employee);
 
         bool Delete(int id);
 

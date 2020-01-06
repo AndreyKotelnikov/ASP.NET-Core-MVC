@@ -65,7 +65,7 @@ namespace ASP_NET_Core_MVC.Controllers
         {
             if (id is null)
             {
-                return View(new EmployeeView());
+                return View(new EmployeeViewModel());
             }
 
             if (id <= 0)
@@ -83,7 +83,7 @@ namespace ASP_NET_Core_MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditOrCreate(EmployeeView employee)
+        public IActionResult EditOrCreate(EmployeeViewModel employee)
         {
             if (employee == null) throw new ArgumentNullException(nameof(employee));
 

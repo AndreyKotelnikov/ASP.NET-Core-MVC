@@ -11,20 +11,22 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
 {
     public class InMemoryEmployeesData : IEmployeesData
     {
-        private readonly List<EmployeeView> _employeeViews = Enumerable.Range(1, 10)
-            .Select(e => new EmployeeView
+        private readonly List<EmployeeViewModel> _employeeViews = Enumerable.Range(1, 10)
+            .Select(e => new EmployeeViewModel
             {
                 Id = e,
                 Name = $"Name {e}",
-                SecondName = $"SecondName {e}"
+                SecondName = $"SecondName {e}",
+                Patronymic = $"Patronymic {e}",
+                Age = e % 30 + 20
             })
             .ToList();
 
-        public IEnumerable<EmployeeView> GetAll() => _employeeViews;
+        public IEnumerable<EmployeeViewModel> GetAll() => _employeeViews;
 
-        public EmployeeView GetById(int id) => _employeeViews.SingleOrDefault(e => e.Id == id);
+        public EmployeeViewModel GetById(int id) => _employeeViews.SingleOrDefault(e => e.Id == id);
 
-        public void Add(EmployeeView employee)
+        public void Add(EmployeeViewModel employee)
         {
             if (employee == null) throw new ArgumentNullException(nameof(employee));
 
@@ -35,7 +37,7 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
             _employeeViews.Add(employee);
         }
 
-        public void Edit(int id, EmployeeView employee)
+        public void Edit(int id, EmployeeViewModel employee)
         {
             if (employee == null) throw new ArgumentNullException(nameof(employee));
 
@@ -47,6 +49,8 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
 
             dbEmployee.Name = employee.Name;
             dbEmployee.SecondName = employee.SecondName;
+            dbEmployee.Patronymic = employee.Patronymic;
+            dbEmployee.Age = employee.Age;
         }
 
         public bool Delete(int id)

@@ -1,4 +1,4 @@
-﻿@model ASP_NET_Core_MVC.ViewModels.EmployeeView
+﻿@model EmployeeViewModel
 
 @{
     ViewData["Title"] = "Delete employee with id: " + Model.Id;
@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-<h3 class="text-danger">Are you sure want to delete this?</h3>
+<h1 class="text-danger">Are you sure want to dismiss this employee?</h1>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -21,6 +21,18 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SecondName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Age)
         </dd>
     </dl>
     

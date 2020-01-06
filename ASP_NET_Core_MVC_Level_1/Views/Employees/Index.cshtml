@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.IEnumerable<ASP_NET_Core_MVC.ViewModels.EmployeeView>
+﻿@model IEnumerable<EmployeeViewModel>
 
 @{
     ViewBag.Title = "Сотрудники";
@@ -12,8 +12,10 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>SurName</th>
+            <th>@Html.DisplayNameFor(m => m.Name)</th>
+            <th>@Html.DisplayNameFor(m => m.SecondName)</th>
+            <th>@Html.DisplayNameFor(m => m.Patronymic)</th>
+            <th>@Html.DisplayNameFor(m => m.Age)</th>
             <th></th>
             <th></th>
         </tr>
@@ -37,6 +39,16 @@
                    asp-route-name="@employee.Name"
                    asp-route-secondName="@employee.SecondName">
                     @employee.SecondName
+                </a>
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@employee.Id">
+                    @employee.Patronymic
+                </a>
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@employee.Id">
+                    @employee.Age
                 </a>
             </td>
             <td>
