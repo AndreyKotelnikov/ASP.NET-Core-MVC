@@ -24,8 +24,6 @@ namespace ASP_NET_Core_MVC.Controllers
 
         public IActionResult ProductDetails() => View();
 
-        public IActionResult Shop() => View();
-
         public IActionResult Error404() => View();
 
         public IActionResult TestAction()
