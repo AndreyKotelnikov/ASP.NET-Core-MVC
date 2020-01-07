@@ -30,7 +30,7 @@ namespace ASP_NET_Core_MVC
             services.AddTransient<WebStoreDbContextInitializer>();
 
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddScoped<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SqlUnitOfWork>();
             
             services.AddMvc(op =>
             {
