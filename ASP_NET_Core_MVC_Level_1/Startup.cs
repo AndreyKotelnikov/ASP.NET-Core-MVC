@@ -4,9 +4,11 @@ using ASP_NET_Core_MVC.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebStore.DAL.Context;
 
 namespace ASP_NET_Core_MVC
 {
@@ -22,6 +24,9 @@ namespace ASP_NET_Core_MVC
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<WebStoreDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             services.AddScoped<IProductData, InMemoryProductData>();
             
