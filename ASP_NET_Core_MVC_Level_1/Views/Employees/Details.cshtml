@@ -1,0 +1,36 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewBag.Title = "Details for employee with id: " + Model.Id;
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Свойство:</th>
+            <th>Значение:</th>
+        </tr>
+    </thead>
+    <tr>
+        <th>@Html.LabelFor(e => e.Id)</th>
+        <td>@Model.Id</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(e => e.Name)</th>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(e => e.SecondName)</th>
+        <td>@Model.SecondName</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(e => e.Patronymic)</th>
+        <td>@Model.Patronymic</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(e => e.Age)</th>
+        <td>@Model.Age</td>
+    </tr>
+</table>

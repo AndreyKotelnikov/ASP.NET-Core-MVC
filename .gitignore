@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/ASP_NET_Core_MVC_Level_1/wwwroot/lib

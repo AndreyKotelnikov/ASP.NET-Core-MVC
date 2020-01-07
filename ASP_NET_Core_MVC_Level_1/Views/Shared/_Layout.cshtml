@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_LayoutBase";
+}
+
+<div class="container">
+    @RenderBody()
+</div>
+
+@section Styles
+{
+    @await RenderSectionAsync("Styles", false)
+}
+
+@section Scripts
+{
+    @await RenderSectionAsync("Scripts", false)
+}
+
+
