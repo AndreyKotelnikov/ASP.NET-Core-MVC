@@ -1,3 +1,4 @@
+using ASP_NET_Core_MVC.Data;
 using ASP_NET_Core_MVC.Infrastructure.Conventions;
 using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.Infrastructure.Services;
@@ -26,6 +27,7 @@ namespace ASP_NET_Core_MVC
         {
             services.AddDbContext<WebStoreDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<WebStoreDbContextInitializer>();
 
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             services.AddScoped<IProductData, InMemoryProductData>();
@@ -37,8 +39,10 @@ namespace ASP_NET_Core_MVC
             });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDbContextInitializer dbContextInit)
         {
+            dbContextInit.InitializeAsync().Wait();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
