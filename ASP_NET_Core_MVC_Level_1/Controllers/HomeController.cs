@@ -1,8 +1,4 @@
-﻿using System.IO;
-using System.Text;
-using System.Text.Json;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_NET_Core_MVC.Controllers
 {

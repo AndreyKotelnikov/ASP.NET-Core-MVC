@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.ViewModels;

@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.ViewModels;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace ASP_NET_Core_MVC.Infrastructure.Services
 {

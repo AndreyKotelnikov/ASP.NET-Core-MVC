@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using ASP_NET_Core_MVC.ViewModels;
 
 namespace ASP_NET_Core_MVC.Infrastructure.Interfaces
