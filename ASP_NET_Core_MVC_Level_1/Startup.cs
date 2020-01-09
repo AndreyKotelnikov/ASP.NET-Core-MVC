@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using WebStore.DAL.Context;
 using WebStore.Domain.Entities.Identity;
+using PageActionEndpointConventionBuilder = Microsoft.AspNetCore.Builder.PageActionEndpointConventionBuilder;
 
 namespace ASP_NET_Core_MVC
 {
@@ -87,12 +88,12 @@ namespace ASP_NET_Core_MVC
         {
             options.Cookie.Name = "WebStore-Identity";
             options.Cookie.HttpOnly = true;
-            options.Cookie.Expiration = TimeSpan.FromDays(150);
 
             options.LoginPath = "/Account/Login";
             options.LogoutPath = "/Account/Logout";
             options.AccessDeniedPath = "/Account/AccessDenied";
 
+            options.ExpireTimeSpan = TimeSpan.FromDays(150);
             options.SlidingExpiration = true;
         }
     }
