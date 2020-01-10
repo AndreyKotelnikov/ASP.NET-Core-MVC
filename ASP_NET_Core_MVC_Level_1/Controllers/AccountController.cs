@@ -51,6 +51,44 @@ namespace ASP_NET_Core_MVC.Controllers
         }
 
 
-        public IActionResult Login() => View();
+        public IActionResult Login(string returnUrl) => View(new LoginViewModel
+        {
+            ReturnUrl = returnUrl
+        });
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel loginModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(loginModel);
+            }
+
+            var loginResult = await _signInManager.PasswordSignInAsync(
+                loginModel.UserName,
+                loginModel.Password,
+                loginModel.RememberMe,
+                false);
+
+            if (loginResult.Succeeded)
+            {
+                if (Url.IsLocalUrl(loginModel.ReturnUrl))
+                {
+                    return Redirect(loginModel.ReturnUrl);
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Указаны некорректные имя или пароль");
+            return View(loginModel);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
