@@ -25,7 +25,6 @@ namespace ASP_NET_Core_MVC
             Configuration = configuration;
         }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebStoreDbContext>(options =>
@@ -41,10 +40,7 @@ namespace ASP_NET_Core_MVC
             services.Configure<IdentityOptions>(GetIdentityOptions);
             services.ConfigureApplicationCookie(GetCookieOptions);
 
-            services.AddMvc(op =>
-            {
-                op.EnableEndpointRouting = false;
-            });
+            services.AddMvc(op => op.EnableEndpointRouting = false);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, WebStoreDbContextInitializer dbContextInit)
