@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP_NET_Core_MVC", "ASP_NET
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.Domain", "WebStore.Domain\WebStore.Domain.csproj", "{AF3AD60C-A308-446C-A3F4-6C9D15E628EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStore.DAL", "WebStore.DAL\WebStore.DAL.csproj", "{FF3D4F6C-3091-4635-B5B2-DFC1C67EA417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebStore.DAL", "WebStore.DAL\WebStore.DAL.csproj", "{FF3D4F6C-3091-4635-B5B2-DFC1C67EA417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
