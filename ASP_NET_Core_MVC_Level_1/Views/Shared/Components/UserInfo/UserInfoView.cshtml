@@ -5,14 +5,16 @@
         {
             <li><a href="#"><i class="fa fa-key"></i> Admin Tools</a></li>
         }
-        
+
         <li><a href="#"><i class="fa fa-star"></i> Wish list</a></li>
-        <li><a href="#"><i class="fa fa-crosshairs"></i> Orders</a></li>
-        <li><a href="#"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+        <li><a asp-controller="Home" asp-action="Checkout"><i class="fa fa-crosshairs"></i> Orders</a></li>
+        <li><a asp-controller="Home" asp-action="Cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
         <li>
-            <form asp-controller="Account" asp-action="Logout" asp-antiforgery="true" method="post">
-                <button type="submit" class="btn btn-link"><i class="fa fa-sign-out"></i> Logout</button>
-            </form>
+            <a href="#" onclick="document.getElementById('logoutForm').submit();return false;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
         </li>
     </ul>
+    <form  id="logoutForm" asp-controller="Account" asp-action="Logout" asp-antiforgery="true" method="post">
+    </form>
 </div>
