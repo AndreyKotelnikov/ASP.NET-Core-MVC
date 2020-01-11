@@ -2,10 +2,12 @@
 using System.Linq;
 using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_NET_Core_MVC.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private readonly IEmployeesData _employeesData;
