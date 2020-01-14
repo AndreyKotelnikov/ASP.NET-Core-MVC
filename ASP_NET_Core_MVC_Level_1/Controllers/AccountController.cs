@@ -102,5 +102,10 @@ namespace ASP_NET_Core_MVC.Controllers
             _logger.LogInformation("Пользователь {0} вышел из системы", User.Identity.Name);
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
