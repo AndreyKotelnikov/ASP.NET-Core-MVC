@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_NET_Core_MVC.ViewModels.Identity
 {
@@ -10,6 +11,7 @@ namespace ASP_NET_Core_MVC.ViewModels.Identity
     {
         [Required]
         [MaxLength(256)]
+        [Remote( "IsNameFree","Account")]
         [Display(Name = "Имя пользователя")]
         public string UserName { get; set; }
 

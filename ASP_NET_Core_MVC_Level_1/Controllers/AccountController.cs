@@ -23,6 +23,16 @@ namespace ASP_NET_Core_MVC.Controllers
             _logger = logger;
         }
 
+        public async Task<IActionResult> IsNameFree(string userName)
+        {
+            if (await _userManager.FindByNameAsync(userName) is null)
+            {
+                return Json(true);
+            }
+
+            return Json("Имя пользователя уже занято!");
+        }
+
         public IActionResult Register() => View(new RegisterUserViewModel());
 
         [HttpPost, ValidateAntiForgeryToken]
