@@ -52,6 +52,7 @@ namespace ASP_NET_Core_MVC.Controllers
             var registrationResult = await _userManager.CreateAsync(user, modelUser.Password);
             if (registrationResult.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, Role.User);
                 _logger.LogInformation("Пользователь {0} успешно зарегистрирован", user.UserName);
                 await _signInManager.SignInAsync(user, false);
                 _logger.LogInformation("Пользователь {0} вошёл в систему", user.UserName);
@@ -110,6 +111,11 @@ namespace ASP_NET_Core_MVC.Controllers
             await _signInManager.SignOutAsync();
             _logger.LogInformation("Пользователь {0} вышел из системы", User.Identity.Name);
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
