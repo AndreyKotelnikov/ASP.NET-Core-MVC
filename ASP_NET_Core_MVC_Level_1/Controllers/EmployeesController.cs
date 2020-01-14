@@ -4,7 +4,6 @@ using ASP_NET_Core_MVC.Infrastructure.Interfaces;
 using ASP_NET_Core_MVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebStore.Domain.Entities.Identity;
 
 namespace ASP_NET_Core_MVC.Controllers
 {
@@ -63,7 +62,6 @@ namespace ASP_NET_Core_MVC.Controllers
             return View(nameof(Details), employee);
         }
 
-        [Authorize(Roles = Role.Administrator)]
         public IActionResult EditOrCreate(int? id)
         {
             if (id is null)
@@ -115,7 +113,6 @@ namespace ASP_NET_Core_MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = Role.Administrator)]
         public IActionResult Delete(int id)
         {
             if (id <= 0)
