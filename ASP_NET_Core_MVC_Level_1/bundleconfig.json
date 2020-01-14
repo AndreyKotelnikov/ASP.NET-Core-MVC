@@ -1,0 +1,25 @@
+[
+  {
+    "outputFileName": "wwwroot/css/output/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/**/*.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "commentMode": "all"
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/output/bundle.js",
+    "inputFiles": [
+      "wwwroot/js/**/*.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "commentMode": "all",
+      "gzip": true,
+      "renameLocals": true
+    },
+    "sourceMap": true
+  }
+]
