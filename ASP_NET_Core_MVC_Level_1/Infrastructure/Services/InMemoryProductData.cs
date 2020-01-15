@@ -28,5 +28,7 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
 
             return query;
         }
+
+        public Product GetProductById(int id) => TestData.Products.SingleOrDefault(p => p.Id == id);
     }
 }

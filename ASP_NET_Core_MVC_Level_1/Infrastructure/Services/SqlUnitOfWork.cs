@@ -40,5 +40,10 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
 
             return query.AsEnumerable();
         }
+
+        public Product GetProductById(int id) => _dbContext.Products
+            .Include(p => p.Brand)
+            .Include(p => p.Section)
+            .SingleOrDefault(p => p.Id == id);
     }
 }

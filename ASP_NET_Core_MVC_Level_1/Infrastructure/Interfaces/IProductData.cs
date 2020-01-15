@@ -10,5 +10,7 @@ namespace ASP_NET_Core_MVC.Infrastructure.Interfaces
         IEnumerable<Section> GetSections();
 
         IEnumerable<Product> GetProducts(ProductFilter filter = null);
+
+        Product GetProductById(int id);
     }
 }
