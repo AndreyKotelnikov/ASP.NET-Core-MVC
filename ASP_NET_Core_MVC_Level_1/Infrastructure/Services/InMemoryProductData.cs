@@ -2,6 +2,7 @@
 using System.Linq;
 using ASP_NET_Core_MVC.Data;
 using ASP_NET_Core_MVC.Infrastructure.Interfaces;
+using Microsoft.AspNetCore.Http.Features;
 using WebStore.Domain.Entities;
 
 namespace ASP_NET_Core_MVC.Infrastructure.Services
@@ -24,6 +25,15 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
             if (filter?.SectionId != null)
             {
                 query = query.Where(p => p.SectionId == filter.SectionId);
+            }
+
+            if (filter?.ProductIdList != null)
+            {
+                query = query.Join(
+                    filter.ProductIdList, 
+                    p => p.Id, 
+                    id => id, 
+                    (p, i) => p);
             }
 
             return query;
