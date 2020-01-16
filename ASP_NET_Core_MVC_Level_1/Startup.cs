@@ -33,6 +33,7 @@ namespace ASP_NET_Core_MVC
 
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             services.AddScoped<IProductData, SqlUnitOfWork>();
+            services.AddScoped<ICartService, CookieCartService>();
 
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<WebStoreDbContext>()
