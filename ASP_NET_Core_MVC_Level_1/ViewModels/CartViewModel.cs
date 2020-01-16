@@ -9,7 +9,7 @@ namespace ASP_NET_Core_MVC.ViewModels
     {
         public Dictionary<ProductViewModel, int> Items { get; set; } = new Dictionary<ProductViewModel, int>();
 
-        public int temsCount => Items?.Sum(i => i.Value) 
+        public int ItemsCount => Items?.Sum(i => i.Value) 
                                 ?? 0;
     }
 }
