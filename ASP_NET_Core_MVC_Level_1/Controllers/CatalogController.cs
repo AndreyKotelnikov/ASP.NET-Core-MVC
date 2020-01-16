@@ -42,7 +42,7 @@ namespace ASP_NET_Core_MVC.Controllers
             return View(catalog);
         }
 
-        public IActionResult Detailes(int id)
+        public IActionResult Details(int id)
         {
             var product = _productData.GetProductById(id);
 
