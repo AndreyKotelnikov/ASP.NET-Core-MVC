@@ -3,8 +3,6 @@
     ViewData["Title"] = "Main page";
 }
 
-
-
 <partial name="Partial/_Slider"/>
 
 <section>
@@ -16,7 +14,7 @@
 
             <div class="col-sm-9 padding-right">
 
-                <partial name="Partial/_FeaturesItems" />
+                @await Component.InvokeAsync("FeaturesItems")
 
                 <partial name="Partial/_CategoryTab" />
 
@@ -26,14 +24,3 @@
         </div>
     </div>
 </section>
-
-@section Styles
-{
-    <!--Styles-->
-}
-
-@section Scripts
-{
-    <!--Scripts-->
-}
-

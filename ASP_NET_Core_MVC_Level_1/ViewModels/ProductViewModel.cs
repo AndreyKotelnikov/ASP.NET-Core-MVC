@@ -1,4 +1,5 @@
-﻿using WebStore.Domain.Entities.Base.Interfaces;
+﻿using WebStore.Domain.Entities;
+using WebStore.Domain.Entities.Base.Interfaces;
 
 namespace ASP_NET_Core_MVC.ViewModels
 {
@@ -13,5 +14,7 @@ namespace ASP_NET_Core_MVC.ViewModels
         public string ImageUrl { get; set; }
 
         public decimal Price { get; set; }
+
+        public string  Brand { get; set; }
     }
 }

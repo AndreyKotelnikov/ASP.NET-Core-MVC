@@ -38,7 +38,24 @@ namespace ASP_NET_Core_MVC.Infrastructure.Services
                 query = query.Where(p => p.SectionId == filter.SectionId);
             }
 
+            if (filter?.ProductIdList != null)
+            {
+                query = query.Include(p => p.Brand)
+                    .AsEnumerable()
+                    .Join(
+                    filter.ProductIdList,
+                    p => p.Id,
+                    id => id,
+                    (p, i) => p)
+                    .AsQueryable();
+            }
+
             return query.AsEnumerable();
         }
+
+        public Product GetProductById(int id) => _dbContext.Products
+            .Include(p => p.Brand)
+            .Include(p => p.Section)
+            .SingleOrDefault(p => p.Id == id);
     }
 }
